@@ -21,6 +21,6 @@ This software identifies GAG species from a mass spectrum.
 <b>Li</b>: maximum number of lithium ion</br>
 
 ### How to deconvolute a mass spectrum
-    exp = GagIdentifier(spectrum, 'hs', )
-    db, _ = exp.build_database()
+    exp = GagIdentifier(spectrum, 'hs', 3, 3, 'Flexible', 4, 10, 1)
+    matches = exp.identify_species()
     
