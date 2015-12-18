@@ -5,7 +5,7 @@ This software identifies GAG species from a mass spectrum.
 
 ## How to Use 
 ### Input parameters
-<b>spectrum</b>: a string of 
+<b>spectrum</b>: a spectrum file in plain text format</br>
 <b>gag_type</b>: type of GAG ('hs': heparan sulfate, 'cs': chondroitin sulfate, 'ds': dermatan sulfate, 'ha': hyaluronic acid)</br>
 <b>accuracy</b>: mass accuracy in ppm</br>
 <b>num_charge</b>: minimum number of charge states</br>
