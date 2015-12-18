@@ -5,7 +5,7 @@ This software identifies GAG species from a mass spectrum.
 
 ## How to Use 
 ### Input parameters
-<b>gag_type</b>: type of GAG</br>
+<b>gag_type</b>: type of GAG ('hs': heparan sulfate, 'cs': chondroitin sulfate, 'ds': dermatan sulfate, 'ha': hyaluronic acid)</br>
 <b>accuracy</b>: mass accuracy in ppm</br>
 <b>num_charge</b>: minimum number of charge states</br>
 <b>length_type</b>: 'Fixed' or 'Flexible'</br>
@@ -20,6 +20,6 @@ This software identifies GAG species from a mass spectrum.
 <b>Li</b>: maximum number of lithium ion</br>
 
 ### How to deconvolute a mass spectrum
-    exp = GagIdentifier(spectrum)
+    exp = GagIdentifier(spectrum, 'hs', )
     db, _ = exp.build_database()
     
