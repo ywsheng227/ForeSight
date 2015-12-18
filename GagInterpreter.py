@@ -38,8 +38,9 @@ def gagLength(gag):
     return gag.dHexA + gag.HexA + gag.HexN + gag.HexNAc + gag.Mann
 
 class GagIdentifier:
-    def __init__(self, gag_type, num_charge, accuracy, length_type='Fixed', range_low=0, range_high=0, 
+    def __init__(self, spectrum, gag_type, num_charge, accuracy, length_type='Fixed', range_low=0, range_high=0, 
                 dHexA=0, Mann=0, NH4=0, Na=0, K=0, Ca=0, Li=0):
+        self.spectrum = spectrum
         self.gag_type = gag_type
         self.accuracy = float(accuracy) / 1000000 
         self.num_charge = num_charge
