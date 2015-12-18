@@ -19,7 +19,7 @@ This software identifies GAG species from a mass spectrum.
 <b>Ca</b>: maximum number of calcium ion</br>
 <b>Li</b>: maximum number of lithium ion</br>
 
-### How to generate a GAG database
-    exp = GagProspector(4, 8, 200, 2000, 1, 6, 7, 0, 0, 2, 20, 1, 1, 0)
+### How to deconvolute a mass spectrum
+    exp = GagIdentifier(spectrum)
     db, _ = exp.build_database()
     
