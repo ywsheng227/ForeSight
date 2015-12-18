@@ -18,15 +18,17 @@ ATOM_MASS = {'C':12, 'H':1.007825, 'N':14.003074, 'O':15.9949146,
              'S':31.972071, 'Na+':22.989222, 'K+':38.963158, 'Ca2+':39.961494,
              'H+':1.007276, '13C':13.00335483, 'Li+':7.015455} 
 
-def read_spectrum(spectrum):
-    #read a spectrum list
+def read_spec_file(spec_file):
+    #read a spectrum file
     regexp = r'[0-9]+\.?[0-9]*'
-    i, L = 0, len(spectrum)
-    while i < L and not re.match('Mass', spectrum[i:]) and not re.match('m/z', spectrum[i:]):
-        i += 1
-    nums = re.findall(regexp, spectrum[i:])
-    mz = [float(nums[i]) for i in range(0, len(nums), 2)]
-    intensity = [float(nums[i]) for i in range(1, len(nums), 2)]
+    mz, intensity = [], []
+    while True:
+        line = spec_file.readline()
+        if not line: break
+        if re.match(regexp, line):
+            single_mz, single_inten = re.findall(regexp, line)
+            mz.append(float(single_mz))
+            intensity.append(float(single_inten))
     return mz, intensity
 
 def generate_isotopic_clusters_brainpy(gag, charge):
@@ -138,7 +140,7 @@ class GagIdentifier:
     
     def identify_species(self):
         #main program
-        mz, intensity = read_spectrum(self.spectrum) 
+        mz, intensity = read_spec_file(self.spectrum) 
         peak_list = self.peak_picking(mz, intensity)
         mass_list, charge_list = self.find_monoisotopic_charge(peak_list)
         
