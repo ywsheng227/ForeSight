@@ -124,11 +124,9 @@ class GagIdentifier:
         matches = []
         for mz, charge, gag in db:
             isotopic_peaks = generate_isotopic_clusters_brainpy(gag, charge)
-            #isotopic_peaks = generate_isotopic_peaks(mz, charge)
             count, matched_peaks, score = 0, [], 0
             for p in isotopic_peaks:
                 match = self.binary_search(-p.mz, peak_list)
-                #match = self.binary_search(p, peak_list)
                 if match:
                     count += 1
                     score += match[1] ** 2
