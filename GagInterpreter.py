@@ -18,19 +18,6 @@ ATOM_MASS = {'C':12, 'H':1.007825, 'N':14.003074, 'O':15.9949146,
              'S':31.972071, 'Na+':22.989222, 'K+':38.963158, 'Ca2+':39.961494,
              'H+':1.007276, '13C':13.00335483, 'Li+':7.015455} 
 
-def read_spec_file(spec_file):
-    #read a spectrum file
-    regexp = r'[0-9]+\.?[0-9]*'
-    mz, intensity = [], []
-    while True:
-        line = spec_file.readline()
-        if not line: break
-        if re.match(regexp, line):
-            single_mz, single_inten = re.findall(regexp, line)
-            mz.append(float(single_mz))
-            intensity.append(float(single_inten))
-    return mz, intensity
-
 def read_spectrum(spectrum):
     #read a spectrum list
     regexp = r'[0-9]+\.?[0-9]*'
@@ -51,9 +38,8 @@ def gagLength(gag):
     return gag.dHexA + gag.HexA + gag.HexN + gag.HexNAc + gag.Mann
 
 class GagIdentifier:
-    def __init__(self, spectrum, gag_type, num_charge, accuracy, length_type='Fixed', range_low=0, range_high=0, 
+    def __init__(self, gag_type, num_charge, accuracy, length_type='Fixed', range_low=0, range_high=0, 
                 dHexA=0, Mann=0, NH4=0, Na=0, K=0, Ca=0, Li=0):
-        self.spectrum = spectrum
         self.gag_type = gag_type
         self.accuracy = float(accuracy) / 1000000 
         self.num_charge = num_charge
@@ -151,8 +137,7 @@ class GagIdentifier:
     
     def identify_species(self):
         #main program
-        mz, intensity = read_spectrum(self.spectrum) if isinstance(self.spectrum, basestring) \
-                        else read_spec_file(self.spectrum)
+        mz, intensity = read_spectrum(self.spectrum) 
         peak_list = self.peak_picking(mz, intensity)
         mass_list, charge_list = self.find_monoisotopic_charge(peak_list)
         
