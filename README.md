@@ -21,6 +21,8 @@ This software identifies GAG species from a mass spectrum.
 <b>Li</b>: maximum number of lithium ion</br>
 
 ### How to deconvolute a mass spectrum
+    from gaginterpreter import GagInterpreter
+    
     spectrum = #some spectrum file
     gag_type = 'hs'
     accuracy = 3
