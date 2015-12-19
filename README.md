@@ -9,7 +9,7 @@ This software identifies GAG species from a mass spectrum.
 <b>gag_type</b>: type of GAG ('hs': heparan sulfate, 'cs': chondroitin sulfate, 'ds': dermatan sulfate, 'ha': hyaluronic acid)</br>
 <b>accuracy</b>: mass accuracy in ppm</br>
 <b>num_charge</b>: minimum number of charge states</br>
-<b>length_type</b>: 'Fixed' or 'Flexible'</br>
+<b>length_type</b>: 'Fixed' or 'Variable'</br>
 <b>range_low</b>: lower end of length range</br>
 <b>range_high</b>: higher end of length range</br>
 <b>dHexA</b>: number of unsaturated hexeruronic acid</br>
@@ -27,7 +27,7 @@ This software identifies GAG species from a mass spectrum.
     gag_type = 'hs'
     accuracy = 3
     num_charge = 3
-    length_type = 'Flexible'
+    length_type = 'Variable'
     range_low = 4
     range_high = 10
     dHexA = 1
