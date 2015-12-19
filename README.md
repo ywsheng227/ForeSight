@@ -21,9 +21,6 @@ This software identifies GAG species from a mass spectrum.
 <b>Li</b>: maximum number of lithium ion</br>
 
 ### How to deconvolute a mass spectrum
-for mass, gag in db:
-            print "%.4f\t%d %d %d %d %d %d %d %d %d %d %d %d %d" % (mass, gag.dHexA, gag.HexA, gag.HexN, gag.HexNAc, gag.Mann, 
-                    gag.Ac, gag.SO3, gag.NH4, gag.HOHloss, gag.Na, gag.K, gag.Ca, gag.Li)
     spectrum = #some spectrum file
     gag_type = 'hs'
     accuracy = 3
@@ -34,4 +31,7 @@ for mass, gag in db:
     dHexA = 1
     exp = GagIdentifier(spectrum, gag_type, accuracy, num_charge, length_type, range_low, range_high, dHexA)
     matches = exp.identify_species()
+    
+    for mass, mz, charge, gag, _ in matches:
+            
     
