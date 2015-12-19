@@ -186,10 +186,7 @@ class GagIdentifier:
             db, num_gag = gag.build_database()
             total_num_gag += num_gag
         
-            if decon_type == 'normal':
-                matches += self.match_peaks_normal(mass_list, db)
-            else:
-                matches += self.match_peaks_challenge(peak_list, db)
+            matches += self.match_peaks_challenge(peak_list, db)
 
             if self.dHexA:
                 gag = GagProspector(min(charge_high_count), max(charge_high_count), CUTOFF_MZ, max(intensity),
@@ -198,11 +195,7 @@ class GagIdentifier:
                                            self.Ca, self.Li, decon_type)
                 db, num_gag = gag.build_database()
                 total_num_gag += num_gag
-        
-                if decon_type == 'normal':
-                    matches += self.match_peaks_normal(mass_list, db)
-                else:
-                    matches += self.match_peaks_challenge(peak_list, db)
+                matches += self.match_peaks_challenge(peak_list, db)
 
         return matches
                                                                           
