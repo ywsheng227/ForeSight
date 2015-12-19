@@ -33,5 +33,6 @@ This software identifies GAG species from a mass spectrum.
     matches = exp.identify_species()
     
     for mass, mz, charge, gag, _ in matches:
-            
+        print "%.4f\t%.4f\t%d\t%d %d %d %d %d %d %d %d %d %d %d %d %d" % (mass, mz, charge, gag.dHexA, gag.HexA, gag.HexN, gag.HexNAc,
+            gag.Mann, gag.Ac, gag.SO3, gag.NH4, gag.HOHloss, gag.Na, gag.K, gag.Ca, gag.Li)
     
